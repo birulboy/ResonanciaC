@@ -18,12 +18,15 @@ private:
     int data[SIZE][SIZE][SIZE];
 
 public:
-    void generateRandomValues() {
+    void generateRandomValuesToFillTheBrain() {
         for (int plano = 0; plano < SIZE; plano++) {
             for (int fila = 0; fila < SIZE; fila++) {
                 for (int columna = 0; columna < SIZE; columna++) {
-                    data[plano][fila][columna] = (rand() % 11) + 25;
-                }
+                    data[plano][fila][columna] = (rand() % 15) + 28;
+                }                               //(rand() % 11) + 25 ("LLENO DE PUNTOS")
+                                                //(rand() % 256) ("PROBABILIDAD ESTANDAR")
+                                                //(rand() % 15) + 28 ("MUCHA PROBABILIDAD")
+                                                //(rand() % 23) + 19 ("ALGUNA PROBABILIDAD")
             }
         }
     }
@@ -317,9 +320,8 @@ public:
 
 int main() {
     srand(static_cast<unsigned>(time(nullptr)));
-
     Brain brain;
-    brain.generateRandomValues();
+    brain.generateRandomValuesToFillTheBrain();
 
     ConsoleUI ui;
     ui.run(brain);
